@@ -26,7 +26,7 @@ dif_XYZ = zeros(3,N);
 for i=1:N
     for e=1:3
         ck=sp.XYZ(e,rg,25); %Para obtener cada coordenada
-        dif_XYZ(e,i)=ck;
+        dif_XYZ(e,i)=get_df(ck);
     end
 end
 
