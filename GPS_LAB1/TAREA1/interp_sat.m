@@ -18,9 +18,6 @@ t=primero+seg;
 prev=floor(x)+1;
 rg=(prev-(N/2)+1:prev+N/2);
 
-s=(N/2-1)+mod(tow,h)/h;
-S=get_S(s,N);
-
 dif_XYZ = zeros(3,N);
 
 for i=1:N
@@ -30,8 +27,12 @@ for i=1:N
     end
 end
 
+s=(N/2-1)+mod(tow,h)/h;
+S=get_S(s,N);
+
 
 return
+
 function df=get_df(f)
 % Función que recibe un vector f y devuelve vector df con
 % las correspondientes diferencias finitas
@@ -47,8 +48,8 @@ while length(f)>NumDF
 end
 df=f;
 fprintf('%.3f ',df);
-end
 return
+
 function S = get_S(s,N)
 % Recibe s y devuelve vector de coefs S para usar en interpolación
     dS=zeros(N,1);
