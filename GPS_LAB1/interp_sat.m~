@@ -16,16 +16,15 @@ sp2=read_sp3(sp);
 primero=sp2.tow(1);
 seg=9*3600+20*60;
 t=primero+seg;
-x=(t-sp2.tow(1))/sp2.delta;
 prev=floor(x)+1;
 rg=(prev-(N/2)+1:prev+N/2);
 
 dif_XYZ = zeros(3,N);
 
 for i=1:N
-    for j=1:3
-        ck=sp2.XYZ(j,rg,25); %Para obtener cada coordenada
-        dif_XYZ(j,i)=get_df(ck);
+    for e=1:3
+        ck=sp.XYZ(e,rg,25); %Para obtener cada coordenada
+        dif_XYZ(e,i)=get_df(ck);
     end
 end
 
