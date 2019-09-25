@@ -18,7 +18,7 @@ sp2=read_sp3(sp);
 t=tow;
 x=(t-sp2.tow(1))/sp2.delta;
 prev=floor(x)+1;
-rg=(prev-(N/2)+1:prev+N/2);
+rg=(prev-N/2+1:prev+N/2);
 
 dif_XYZ = zeros(3,N);
 
@@ -30,7 +30,8 @@ dif_XYZ = zeros(3,N);
 
 s=(N/2-1)+mod(tow,h)/h;
 S=get_S(s,N);
-
+XYZ=dif_XYZ*S;
+fprintf('XYZ= [%.2f %.2f %.2f]',XYZ)
 
 return
 
