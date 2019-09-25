@@ -48,6 +48,7 @@ while length(f)>NumDF
     NumDF=NumDF+1;
 end
 df=f;
+
 return
 
 function S = get_S(s,N)
@@ -58,5 +59,6 @@ function S = get_S(s,N)
         k=i-1;
         dS(i,1) = dS(i-1,1)*((s-k+1)/k);
     end
-    S=dS;
-return 
+S=dS;
+return
+
