@@ -13,9 +13,9 @@ function [XYZ, cdT]=interp_sat(sp,tow,PRN,N)
 
 h=900;
 sp2=read_sp3(sp);
-primero=sp2.tow(1);
-seg=9*3600+20*60;
-t=primero+seg;
+% primero=sp2.tow(1);
+% seg=9*3600+20*60;
+t=tow;
 x=(t-sp2.tow(1))/sp2.delta;
 prev=floor(x)+1;
 rg=(prev-(N/2)+1:prev+N/2);
