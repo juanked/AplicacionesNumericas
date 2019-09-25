@@ -22,12 +22,11 @@ rg=(prev-(N/2)+1:prev+N/2);
 
 dif_XYZ = zeros(3,N);
 
-for i=1:N
     for j=1:3
         ck=sp2.XYZ(j,rg,25); %Para obtener cada coordenada
-        dif_XYZ(j,i)=get_df(ck);
+        dif_XYZ(j,:)=get_df(ck);
     end
-end
+
 
 s=(N/2-1)+mod(tow,h)/h;
 S=get_S(s,N);
@@ -49,7 +48,6 @@ while length(f)>NumDF
     NumDF=NumDF+1;
 end
 df=f;
-fprintf('%.3f ',df);
 return
 
 function S = get_S(s,N)
@@ -60,5 +58,5 @@ function S = get_S(s,N)
         k=i-1;
         dS(i,1) = dS(i-1,1)*((s-k+1)/k);
     end
-    fprintf('%.5f ',dS);
-return
+    S=dS;
+return 
