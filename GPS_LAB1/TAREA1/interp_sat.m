@@ -12,9 +12,24 @@ function [XYZ, cdT]=interp_sat(sp,tow,PRN,N)
 % Siguiendo lo realizado en el ejercicio 2:
 
 h=900;
+primero=sp.tow(1);
+seg=9*3600+20*60;
+t=primero+seg;
+prev=floor(x)+1;
+rg=(prev-(N/2)+1:prev+N/2);
 
+s=(N/2-1)+mod(tow,h)/h;
+S=get_S(s,N);
 
 dif_XYZ = zeros(3,N);
+
+for i=1:N
+    for e=1:3
+        ck=sp.XYZ(e,rg,25); %Para obtener cada coordenada
+        dif_XYZ(e,i)=ck;
+    end
+end
+
 
 return
 function df=get_df(f)
