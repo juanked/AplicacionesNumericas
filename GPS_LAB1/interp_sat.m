@@ -12,9 +12,10 @@ function [XYZ, cdT]=interp_sat(sp,tow,PRN,N)
 % Siguiendo lo realizado en el ejercicio 2:
 
 
-sp2=read_sp3(sp);
+sp2=sp;
 h=sp2.delta;
 sp2.tow(1);
+PRN=find(PRN==sp2.prn);
 % primero=sp2.tow(1);
 % seg=9*3600+20*60;
 t=tow;
@@ -31,8 +32,9 @@ dif_XYZ = zeros(3,N);
 s=(N/2-1)+mod(t,h)/h;
 S=get_S(s,N);
 XYZ=dif_XYZ*S;
+
 cdt=sp2.cdT(PRN,rg);
-cdT=cdt*S;
+cdT=get_df(cdt)*S;
 %fprintf('XYZ= [%.2f %.2f %.2f]',XYZ);
 
 return
