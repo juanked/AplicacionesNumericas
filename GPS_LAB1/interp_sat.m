@@ -20,14 +20,16 @@ function [XYZ, cdT, Vxyz, D] = interp_sat(sp, tow, PRN, N)
 
     s = (N / 2 - 1) + mod(t, h) / h;
     S = get_S(s, N);
-    XYZ = dif_XYZ * S;
-
-    cdt = sp.cdT(PRN, rg);
-    cdT = get_df(cdt) * S;
-
     dS=get_S2(s,N);
+    cdt = sp.cdT(PRN, rg);
+    
+    
+    XYZ = dif_XYZ * S;
+    cdT = get_df(cdt) * S;
     Vxyz= (dif_XYZ*dS)/h;
-    D=5;%para probar solo
+    D=(get_df(cdt)*dS)/h;
+
+
 return
 
 function df=get_df(f)
