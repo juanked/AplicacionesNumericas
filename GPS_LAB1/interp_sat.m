@@ -20,7 +20,7 @@ function [XYZ, cdT, Vxyz, D] = interp_sat(sp, tow, PRN, N)
 
     s = (N / 2 - 1) + mod(t, h) / h;
     S = get_S(s, N);
-    dS=get_S2(s,N);
+    dS=get_S(s,N);
     cdt = sp.cdT(PRN, rg);
     
     
@@ -49,17 +49,9 @@ df=f;
 
 return
 
-function S = get_S(s,N)
-% Recibe s y devuelve vector de coefs S para usar en interpolación
-    dS=zeros(N,1);
-    dS(1,1)=1;
-    for i=1:N-1
-        dS(i+1,1) = dS(i,1)*((s-i+1)/i);
-    end
-S=dS;
-return
 
-function [S, dS] = get_S2(s, N)
+
+function [S, dS] = get_S(s, N)
     % Recibe s y devuelve vector de coefs S para usar en interpolación
     S = zeros(N, 1);
     dS=zeros(N,1);
