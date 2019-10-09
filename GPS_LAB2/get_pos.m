@@ -20,22 +20,22 @@ function X = get_pos(sp, Tr, sats, obs, X, N)
 %             
 %             i=i+1;
 %         end
-%     end     
+%     end
+    i=1;
     while (1)
         
-        pos = X(1:3,1)
-        cdt = X(4,1)
-        Tr
-        Tr_gps = Tr - cdt
-        Tx_gps = Tr_gps - 0.070
+        pos = X(1:3,1);
+        cdt = X(4,1);
+        Tr;
+        Tr_gps = Tr - cdt/c;
+        Tx_gps = Tr_gps - 0.070;
         [XYZ, cdT] = get_data_sats(sp, Tx_gps, sats, N);
-
         [H, R] = get_HR(XYZ, pos);
         pred = R + cdt - cdT;
-        difRho = pred - obs; %o al revés, ni zorra
-        deltaX = H\difRho %vector 4x1
-        X = X + deltaX
-        i=i+1;
+        difRho = obs - pred;
+        deltaX = H\difRho; %vector 4x1
+        X = X + deltaX;
+        i=i+1
         if (norm(deltaX)<0.01)
             break;
         end

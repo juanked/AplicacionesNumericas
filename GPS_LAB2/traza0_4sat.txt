@@ -7,7 +7,7 @@ SAT   Pseudorango
   6   20555740.449
 Hipotesis inicial: XYZ_0 = (0, 0, 0)   cdt0 0.000
 Usando N=8 nodos
-Tiempo de vuelo fijo y común a todos: 0.070 seg
+Tiempo de vuelo fijo y comï¿½n a todos: 0.070 seg
 -------------------------------------------------------------
 Iteracion 1 -------------------------------------------------
 Tiempo recepcion GPS  = Trec - dt = 7200.00000000
@@ -29,7 +29,7 @@ Matriz H :
  0.1033445 -0.5696859 -0.8153391    1
 -0.4744427 -0.8495460 -0.2305987    1
 -0.6638723 -0.0979019 -0.7414100    1
-Delta_XYZ  [5785657.66 -264647.85 4984452.91]. Delta_cdt 1488958.75
+Delta_XYZ  [5785657.6646 -264647.85 4984452.91]. Delta_cdt 1488958.75
 Estimacion actual XYZ =[5785657.66 -264647.85 4984452.91] mt.
                   cdt = 1488958.75 mt
 -------------------------------------------------------------
@@ -57,7 +57,7 @@ Delta_XYZ  [-907357.96 5349.42 -831269.47]. Delta_cdt -1253616.06
 Estimacion actual XYZ =[4878299.69 -259298.43 4153183.44] mt.
                   cdt = 235342.69 mt
 -------------------------------------------------------------
-Iteracion 3 -------------------------------------------------
+Iteracion 3 ----------46---------------------------------------
 Tiempo recepcion GPS  = Trec - dt = 7199.99921498
 Datos de satelites en sus distintos tiempos transmision (TX)
  SAT  tau(ms)     TX_GPS            Xsat          Ysat          Zsat       dTsat(m)
