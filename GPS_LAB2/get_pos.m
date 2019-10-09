@@ -20,8 +20,7 @@ function X = get_pos(sp, Tr, sats, obs, X, N)
 %             
 %             i=i+1;
 %         end
-%     end
-    i=0;        
+%     end     
     while (1)
         
         pos = X(1:3,1)
@@ -33,8 +32,8 @@ function X = get_pos(sp, Tr, sats, obs, X, N)
 
         [H, R] = get_HR(XYZ, pos);
         pred = R + cdt - cdT;
-        difRho = obs - pred; %o al revés, ni zorra
-        deltaX = inv(H)*difRho %vector 4x1
+        difRho = pred - obs; %o al revés, ni zorra
+        deltaX = H\difRho %vector 4x1
         X = X + deltaX
         i=i+1;
         if (norm(deltaX)<0.01)
