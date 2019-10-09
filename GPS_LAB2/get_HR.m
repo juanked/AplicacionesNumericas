@@ -9,4 +9,6 @@ for i=1:nsat
    H(i,3)=(-(XYZ(3,1)-pos(3)))/(R(i,1));
    H(i,4)=1;
 end
+
 return
+ 
