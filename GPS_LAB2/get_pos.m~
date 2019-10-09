@@ -6,21 +6,16 @@ function X = get_pos(sp, Tr, sats, obs, X, N)
     c = 2.99792458e8;
     deltaX=zeros(4,1);
     pos=zeros(3,1);
-    i=1;
-    while (i<length(sats)+1)
-        sats(i) = find(sats(i) == sp.prn)
-        i=i+1;
-    end
-    i=1;
+    while 
+    sats(i) = find(sats(i) == sp.prn);
+    i=0;
     Tr
-    st=length(Tr)
-    if (length(Tr)==1)
-        Tr2=zeros(1,length(sats))
-        i=1;
-        while (i<length(sats)+1)
+    size(Tr)
+    if (size(Tr)==1)
+        Tr2=zeros(size(sats));
+        i=0;
+        while (i<size(sats)+1)
             Tr2(i)=Tr
-            
-            i=i+1
         end
     end
             
