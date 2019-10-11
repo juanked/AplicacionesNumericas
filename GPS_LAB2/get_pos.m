@@ -12,11 +12,6 @@ function X = get_pos(sp, Tr, sats, obs, X, N)
             pos = zeros(3, 1);
             i = 1;
 
-            while (i < length(sats) + 1)
-                sats(i) = find(sats(i) == sp.prn);
-                i = i + 1;
-            end
-            
             while (1)
                 
                 pos = X(1:3, 1);
