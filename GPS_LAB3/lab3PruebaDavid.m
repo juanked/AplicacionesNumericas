@@ -24,7 +24,6 @@ for i=1:length(obs)
 end
 prnsmat=prnsmat(prnsmat~=0);
 obs=obs(obs~=0);
-towmat=towmat(towmat~=0);
 S(:,1)=get_pos(sp,tow(1),prnsmat(:,1),obs(:,1),Xmad);
 for i=2:900
     S(:,i)=get_pos(sp,tow(1),prnsmat(:,1),obs(:,1),S(:,i-1));
