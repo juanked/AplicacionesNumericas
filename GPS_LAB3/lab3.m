@@ -20,7 +20,7 @@ for i=1:length(obs)
     
 end
 resultado=zeros(contador,1);
-resultado2=resultado;
+resultado2=zeros(contador,1);
 contador2=0;
 for i=1:length(obs)
     columna=obs(:,i);
