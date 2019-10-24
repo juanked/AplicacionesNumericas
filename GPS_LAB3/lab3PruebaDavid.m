@@ -8,6 +8,7 @@ prns=yebe.prn;
 tow=yebe.tow;
 prnsmat=zeros(26,900);
 Xmad=[4855000; -325000; 4115000; 0.00];
+c = 2.99792458e8;
 for i=1:900
     prnsmat(:,i)=prns';
     
@@ -28,3 +29,4 @@ S(:,1)=get_pos(sp,tow(1),prnsmat(:,1),obs(:,1),Xmad);
 for i=2:900
     S(:,i)=get_pos(sp,tow(1),prnsmat(:,1),obs(:,1),S(:,i-1));
 end
+errorReloj=(S(4,:)/c*1000);
