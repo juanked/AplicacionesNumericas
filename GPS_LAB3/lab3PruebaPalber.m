@@ -10,8 +10,6 @@ prnsmat=zeros(26,900);
 Xmad=[4855000; -325000; 4115000; 0.00];
 c = 2.99792458e8;
 
-% S(:,1)=get_pos(sp,tow(1),prnsmat,obs,Xmad);
-
 contador=0;
 columnaobs=obs(:,1);   
 for j=1:length(columnaobs)
@@ -31,25 +29,6 @@ for j=1:length(columnaobs)
 end
 S(:,1)=get_pos(sp,tow(1),resultadoprn,resultadoobs,Xmad);
 
-% contador=0;
-% columnaobs=obs(:,2);   
-% for j=1:length(columnaobs)
-%         if columnaobs(j)>0
-%             contador=contador+1;
-%         end
-% end
-%      resultadoobs=zeros(contador,1);
-%      resultadoprn=zeros(1,contador);
-%      contador=0;
-% for j=1:length(columnaobs)        
-%         if columnaobs(j)>0
-%             contador=contador+1;
-%             resultadoobs(contador)=columnaobs(j);
-%             resultadoprn(contador)=prns(j);
-%         end
-% end
-% S(:,2)=get_pos(sp,tow(2),resultadoprn,resultadoobs,S(:,1));
- for i=2:900
     contador=0;
     columnaobs=obs(:,i);   
     for j=1:length(columnaobs)
@@ -104,30 +83,19 @@ end
 rmean=mean(r);
 fprintf("%.8f\n",rmean);
 im=imread('yebes.jpg'); 
-x=UTMplana(1,:)/10^4;
-y=UTMplana(2,:)/10^4;
-x=x+492;
-y=y-4487;
+x=UTMplana(1,:)-492000; %pasamos las lat y long a UTM y le restamos la diferencia real 
+                        %de las coordenadas con los pixeles en el mapa en
+                        %este caso le restamos el maximo valor por la
+                        %izquierda del mapa para que empieze en 0,0
+y=UTMplana(2,:)-4485000;%pasamos las lat y long a UTM y le restamos la diferencia real 
+                        %de las coordenadas con los pixeles en el mapa
+image(im);              %este caso le restamos el maximo valor por 
+                        %abajo del mapa para que empieze en 0,0
+hold on;
+plot(x,y,'b.');
 
-plot(-x,y,'b.');
-hold on
-image(im);
-
-% for i=1:length(obs)
-%     columna=obs(:,i);
-%     for j=1:length(columna)
-%         if obs(j,i)<=0
-%             prnsmat(j,i)=0;
-%             obs(j,i)=0;
-%         end
-%     end
-%     
-% end
-% prnsmat2=prnsmat(prnsmat~=0);
-% prnsmat= prnsmat2.';
-% obs=obs(obs~=0);
-% S(:,1)=get_pos(sp,tow(1),prnsmat,obs,Xmad);
-% for i=2:900
-%     %S(:,i)=get_pos(sp,tow(i),prnsmat(:,1),obs(:,1),S(:,i-1));
-% end
+E0=492000;  %maximo mapa por la izquierda
+E1=494000;  %maximo mapa por la derecha
+N0=4487000; %maximo mapa por arriba
+N1=4485000; %maximo mapa por abajo
 
