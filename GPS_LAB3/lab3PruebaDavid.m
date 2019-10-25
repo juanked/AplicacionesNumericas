@@ -1,3 +1,4 @@
+tic;
 load obs;
 sp=read_sp3('igs13230.sp3');
 NT=900;
@@ -23,10 +24,18 @@ for i=1:length(obs)
     end
     
 end
-prnsmat=prnsmat(prnsmat~=0);
-obs=obs(obs~=0);
-S(:,1)=get_pos(sp,tow(1),prnsmat(:,1),obs(:,1),Xmad);
-for i=2:900
-    S(:,i)=get_pos(sp,tow(1),prnsmat(:,1),obs(:,1),S(:,i-1));
-end
-errorReloj=(S(4,:)/c*1000);
+% prnsmat=prnsmat(prnsmat~=0);
+% obs=obs(obs~=0);
+% nuevoobs=zeros(9,900);
+% for i=1:800
+%     columna=obs(:,i);
+%     columna(columna<=0)=[];
+% %     obs(:,i)=columna(:,i);
+% end
+% S(:,1)=get_pos(sp,tow(1),prnsmat(:,1),obs(:,1),Xmad);
+% 
+% for i=2:900
+%     S(:,i)=get_pos(sp,tow(i),prnsmat(:,i),obs(:,i),S(:,i-1));
+% end
+
+toc;
