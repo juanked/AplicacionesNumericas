@@ -1,4 +1,3 @@
-clear all;
 load obs;
 sp=read_sp3('igs13230.sp3');
 NT=900;
@@ -47,11 +46,8 @@ for i=2:900
             end
     end
     S(:,i)=get_pos(sp,tow(i),resultadoprn,resultadoobs,S(:,(i-1)));
- end
-
-errorrel=S(4,:);
-errorrel=errorrel/c*1000;
-% plot(1:900,errorrel);
+end
+ 
 
 xyz=S(1:3,:);
 resultado=xyz2llh(xyz);
@@ -66,36 +62,4 @@ UTM2=ll2utm(llh(1:2,:));
 dE=UTMplana(1,:)-UTM2(1);
 dN=UTMplana(2,:)-UTM2(2);
 dH=h-llh(3,:);
-% plot(dE,dN)
-
-% plot(dH)
-
-mediadE=mean(dE);
-mediadN=mean(dN);
-mediaH=mean(dH);
-maxdE=max(dE);
-maxdN=max(dN);
-maxH=max(dH);
-r=zeros(1,NT);
-for i=1:NT
-    r(i)=sqrt(UTMplana(1,i)^2+UTMplana(2,i)^2);
-end
-rmean=mean(r);
-fprintf("%.8f\n",rmean);
-im=imread('yebes.jpg'); 
-x=UTMplana(1,:)-492000; %pasamos las lat y long a UTM y le restamos la diferencia real 
-                        %de las coordenadas con los pixeles en el mapa en
-                        %este caso le restamos el maximo valor por la
-                        %izquierda del mapa para que empieze en 0,0
-y=UTMplana(2,:)-4485000;%pasamos las lat y long a UTM y le restamos la diferencia real 
-                        %de las coordenadas con los pixeles en el mapa
-image(im);              %este caso le restamos el maximo valor por 
-                        %abajo del mapa para que empieze en 0,0
-hold on;
-plot(x,y,'b.');
-
-E0=492000;  %maximo mapa por la izquierda
-E1=494000;  %maximo mapa por la derecha
-N0=4487000; %maximo mapa por arriba
-N1=4485000; %maximo mapa por abajo
-
+plot(dE,dN)
