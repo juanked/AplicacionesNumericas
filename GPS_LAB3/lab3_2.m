@@ -5,6 +5,7 @@ N=8;
 t=7200;
 pos=~[4855000; -325000; 4115000];
 XYZ=get_data_sats(sp,t,sats,N);
+XYZog=XYZ;
 H=get_HR(XYZ,pos);
 Q=(H'*H)^-1;
 PDoP=sqrt(Q(1,1)+Q(2,2)+Q(3,3));
@@ -52,5 +53,13 @@ hold off
 satmin=lista(find(PDoP5==minimo),:);
 satmax=lista(find(PDoP5==maximo),:);
 XYZ=get_data_sats(sp,t,lista(i,:),N);
+plot(XYZog(1,:),XYZog(2,:),'bo')
+hold on
+XYZog=get_data_sats(sp, t, satmin, N);
+plot(XYZog(1,:),XYZog(2,:),'r.')
+XYZog=get_data_sats(sp, t, satmax, N);
+hold on
+plot(XYZog(1,:),XYZog(2,:),'g.')
+legend('satelites', 'minimo', 'maximo')
 
 % legend(XYZ(1,
