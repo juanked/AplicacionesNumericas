@@ -65,3 +65,4 @@ G=alpha*S+(1-alpha)*ones(N)/N;
 [V D]=eig(G);
 autovalores=diag(D);
 autovectores=sum(D);
+
