@@ -12,35 +12,27 @@ A=[0 0 0 0 0 0 0;
    0 0 0.5 0 0 0 0;
    0 0.5 0 0.5 0 0.333 0];
 
-i=[0 3 1 4 2 1 3]+1;
-j=[3 2 2 2 0 3 2]+1;
+i=[1 4 7 2 1 3 6 7 1 6 3 2 4 6];
+j=[2 2 2 3 4 4 4 4 5 5 6 7 7 7];
 %i=find(Nj==0);
 N=7; % Dimensión de la matriz
 alpha=0.85;
-%C=sparse(j,i,1,N,N);
-C=[0 1 0 1 1 0 0;
-    0 0 1 0 0 0 1;
-    0 0 0 1 0 1 0;
-    0 1 0 0 0 0 1;
-    0 0 0 0 0 0 0;
-    0 0 0 1 1 0 1;
-    0 1 0 1 0 0 0;];
-C=C';
-C=sparse(C);
+C=sparse(j,i,1,N,N);
+% C=[0 1 0 1 1 0 0;
+%     0 0 1 0 0 0 1;
+%     0 0 0 1 0 1 0;
+%     0 1 0 0 0 0 1;
+%     0 0 0 0 0 0 0;
+%     0 0 0 1 1 0 1;
+%     0 1 0 1 0 0 0;];
+% C=C';
+% C=sparse(C);
 % i=[0 3 1 4 2 1 3]+1;
 % j=[3 2 2 2 0 3 2]+1;
-i=[0 0 0 0 0 0 0;
-    1 0 0 1 0 0 1;
-    0 1 0 0 0 0 0;
-    1 0 1 0 0 1 1;
-    1 0 0 0 0 1 0;
-    0 0 1 0 0 0 0;
-    0 1 0 1 0 1 0]+1;
-j=[0 1 0 1 1 0 0;
-    ]+1;
+
 %i=find(Nj==0);
 N=7; % Dimensión de la matriz
-%C=sparse(j,i,1,N,N);
+C=sparse(j,i,1,N,N);
 %C=sparse(1:7,1:7,1,N,N)
  % Crea la matriz dispersa C de tamaño NxN tal que C(j(k),i(k))=1.
  % Los vectores i, j del mismo tamaño contienen los nodos de entrada y de salida
