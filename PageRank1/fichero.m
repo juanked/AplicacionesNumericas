@@ -62,3 +62,6 @@ for k=1:N
 end
 %G=zeros(size(S));
 G=alpha*S+(1-alpha)*ones(N)/N;
+[V D]=eig(G);
+autovalores=diag(D);
+autovectores=sum(D);
