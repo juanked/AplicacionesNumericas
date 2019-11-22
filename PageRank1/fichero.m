@@ -24,13 +24,11 @@ C=sparse(j,i,1,N,N);
 full(C) % Visualizamos la matriz completa.
 Ccompleta=full(C); % Creamos la matriz completa
 whos % Vemos el tamaño que ocupan en memoria las matrices C y Ccompleta 
-
 Nj=sum(C);
 Dj=zeros(1,N);
 Dj(find(Nj==0))=1;
 S=C;
 for k=1:N
-    ceros=zeros(N,1);
     if Dj(k)==1
         S(:,k)=ones(N,1)/N;
     else
@@ -39,10 +37,17 @@ for k=1:N
 end
 %G=zeros(size(S));
 G=alpha*S+(1-alpha)*ones(N)/N;
-[V D]=eig(G);
+[V,D]=eig(G);
 autovalores=diag(abs(D));
-autovectores=sum(abs(V));
+V;
+autovector=sum(abs(V));
 
 [lambda,x]=potencia(G,50);
 precision1=norm(G*x-lambda*x);
 precision2=abs(lambda-1);
+% G*x
+% lambda*x
+[lambda,pagerank]=getPageRank(G,500000,7);
+precision3=norm(G*x-lambda*x);
+precision4=abs(lambda-1);
+bar(pagerank)
