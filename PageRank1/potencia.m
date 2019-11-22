@@ -1,6 +1,7 @@
 function [autovalor, autovector]=potencia(A,niter)
     N=7;
     x1=ones(N,1);
+    respuesta=x1;
     for k=1:niter
         x=x1;
         x=x/norm(x);
@@ -9,4 +10,6 @@ function [autovalor, autovector]=potencia(A,niter)
     lambda=x'*x1;
     autovector=x;
     autovalor=lambda;
+    
+    
 return
