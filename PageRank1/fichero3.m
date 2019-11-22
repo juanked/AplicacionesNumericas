@@ -2,16 +2,6 @@
 % Doncel Aparicio, Alberto
 
 clear all
-
-%Matriz A de conexiones
-A=[0 0 0 0 0 0 0;
-   0.333 0 0 0.5 0 0 0.5;
-   0 0.5 0 0 0 0 0;
-   0.333 0 0.5 0 0 0.333 0.5;
-   0.333 0 0 0 0 0.333 0;
-   0 0 0.5 0 0 0 0;
-   0 0.5 0 0.5 0 0.333 0];
-
 N=10;p=5;i=randi(N,1,p*N);j=randi(N,1,p*N);C=sparse(i,j,1,N,N);niter=20;
 %N=dimensión, p=#medio links salida, niter=# iteraciones
 full(C) % Visualizamos la matriz completa.
@@ -39,6 +29,37 @@ autovectores=sum(abs(V));
 [lambda,x]=potencia(G,50);
 precision1=norm(G*x-lambda*x);
 precision2=abs(lambda-1);
-bar(x)
+[lambda,pagerank]=getPageRank(G,50,N);
+bar(pagerank)
 precision=max(precision1,precision2);
-ordenpagerank=sort(x,'descend');
+ordenpagerank=sort(pagerank,'descend');
+function [autovalor, pagerank]=getPageRank(A,niter,N)
+    x1=ones(N,1);
+    for k=1:niter
+        x=x1;
+        x=x/norm(x);
+        x1=A*x;
+    end
+    lambda=x'*x1;
+    pagerank=x/sum(x);
+    autovalor=lambda;
+    
+    
+return
+end
+function [autovalor, autovector]=potencia(A,niter)
+    N=10;
+    x1=ones(N,1);
+    respuesta=x1;
+    for k=1:niter
+        x=x1;
+        x=x/norm(x);
+        x1=A*x;
+    end
+    lambda=x'*x1;
+    autovector=x;
+    autovalor=lambda;
+    
+    
+return
+end

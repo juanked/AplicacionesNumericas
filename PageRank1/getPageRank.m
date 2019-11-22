@@ -1,5 +1,4 @@
-function [autovalor, pagerank]=getPageRankfu(A,niter)
-    N=7;
+function [autovalor, pagerank]=getPageRank(A,niter,N)
     x1=ones(N,1);
     for k=1:niter
         x=x1;

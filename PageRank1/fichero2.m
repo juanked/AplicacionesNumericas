@@ -2,16 +2,6 @@
 % Doncel Aparicio, Alberto
 
 clear all
-
-%Matriz A de conexiones
-A=[0 0 0 0 0 0 0;
-   0.333 0 0 0.5 0 0 0.5;
-   0 0.5 0 0 0 0 0;
-   0.333 0 0.5 0 0 0.333 0.5;
-   0.333 0 0 0 0 0.333 0;
-   0 0 0.5 0 0 0 0;
-   0 0.5 0 0.5 0 0.333 0];
-
 i=[5 3 3 7 7 8 11 11 11];
 j=[11 10 8 8 11 9 9 10 2];
 N=11; % Dimensión de la matriz
@@ -45,4 +35,34 @@ autovectores=sum(abs(V));
 [lambda,x]=potencia(G,50);
 precision1=norm(G*x-lambda*x);
 precision2=abs(lambda-1);
-bar(x)
+[autovalor,pagerank]=getPageRank(G,50,N);
+bar(pagerank)
+function [autovalor, autovector]=potencia(A,niter)
+    N=11;
+    x1=ones(N,1);
+    for k=1:niter
+        x=x1;
+        x=x/norm(x);
+        x1=A*x;
+    end
+    lambda=x'*x1;
+    autovector=x;
+    autovalor=lambda;
+    
+    
+return
+end
+function [autovalor, pagerank]=getPageRankfu(A,niter,N)
+    x1=ones(N,1);
+    for k=1:niter
+        x=x1;
+        x=x/norm(x);
+        x1=A*x;
+    end
+    lambda=x'*x1;
+    pagerank=x/sum(x);
+    autovalor=lambda;
+    
+    
+return
+end
